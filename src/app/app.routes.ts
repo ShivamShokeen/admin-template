@@ -4,6 +4,7 @@ import { SignUpComponent } from './signup-signin/sign-up/sign-up.component';
 import { DashboardComponent } from './signup-signin/dashboard/dashboard.component';
 import { sign } from 'crypto';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { AuthguardService } from './Auth/authguard.service';
 
 export const routes: Routes = [
   {
@@ -22,6 +23,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthguardService],
   },
   {
     path: '**',

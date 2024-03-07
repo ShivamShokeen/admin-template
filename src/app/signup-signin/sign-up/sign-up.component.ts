@@ -34,6 +34,7 @@ export class SignUpComponent implements OnInit {
       ],
     ],
     policy: [null, [Validators.required]],
+    role: null,
   });
 
   constructor(
@@ -45,14 +46,16 @@ export class SignUpComponent implements OnInit {
   ngOnInit(): void {
     this.signupForm.reset();
     this.signupForm.controls['policy'].patchValue(false);
+    this.signupForm.controls['role'].patchValue('user');
   }
 
   signup() {
-    console.log('data', this.signupForm.value);
-    console.log('email', this.signupForm.get('email')?.value);
     if (this.signupForm.valid) {
-      localStorage.setItem('user_details', JSON.stringify(this.signupForm.value));
-       this.router.navigate(['/sign-in']);
+      localStorage.setItem(
+        'user_details',
+        JSON.stringify(this.signupForm.value)
+      );
+      this.router.navigate(['/sign-in']);
     }
   }
 

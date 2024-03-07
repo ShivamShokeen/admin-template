@@ -29,6 +29,7 @@ export class SignInComponent implements OnInit {
       ],
     ],
     remember: false,
+    role: null,
   });
 
   constructor(
@@ -38,8 +39,38 @@ export class SignInComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.formReset();
+  }
+
+  formReset() {
     this.signinForm.reset();
     this.signinForm.controls['remember'].patchValue(false);
+    this.signinForm.controls['role'].patchValue('user');
+  }
+
+  fillCred(data: any) {
+    if (data?.value == 'superadmin') {
+      this.formReset();
+      this.signinForm.patchValue({
+        email: 'shivamshokeen67@gmail.com',
+        password: 'superadmin@A1',
+        role: 'superadmin',
+        remember: true,
+      });
+    }
+
+    if (data?.value == 'admin') {
+      this.formReset();
+      this.signinForm.patchValue({
+        email: 'sam@any.com',
+        password: 'superadmin@A1',
+        role: 'admin',
+        remember: true,
+      });
+    }
+    if (data?.value == 'clear') {
+      this.formReset();
+    }
   }
 
   signin() {
@@ -49,14 +80,17 @@ export class SignInComponent implements OnInit {
       userData = JSON.parse(item);
     }
     if (
-      this.signinForm.get('email')?.value == 'shivamshokeen67@gmail.com' &&
-      this.signinForm.get('password')?.value == 'superadmin@A1'
+      (this.signinForm.get('email')?.value == 'shivamshokeen67@gmail.com' &&
+        this.signinForm.get('password')?.value == 'superadmin@A1') ||
+      (this.signinForm.get('email')?.value == 'sam@any.com' &&
+        this.signinForm.get('password')?.value == 'superadmin@A1')
     ) {
       localStorage.setItem(
         'user_details',
         JSON.stringify(this.signinForm.value)
       );
       this.router.navigate(['/dashboard']);
+      this.formReset();
     } else if (
       userData != null &&
       this.signinForm.get('email')?.value == userData?.email &&
@@ -65,8 +99,8 @@ export class SignInComponent implements OnInit {
       if (this.signinForm.get('remember')?.value == false) {
         localStorage.removeItem('user_details');
       }
-
       this.router.navigate(['/dashboard']);
+      this.formReset();
     } else {
       this.toast.error('Invalid Credentails');
     }
