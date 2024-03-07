@@ -1,0 +1,85 @@
+<div class="row centerContainer">
+    <div class="col d-flex justify-content-center mt-5">
+        <div class="card" style="width: 23rem;">
+            <div class="card-body">
+                <form autocomplete="off" [formGroup]="signinForm"
+                    (keydown.enter)="signinForm.valid ? signin() : false ">
+                    <h5 class="card-title">Sign in to account</h5>
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" formControlName="email" class="form-control" id="floatingInput"
+                            placeholder="name@example.com"
+                            [ngClass]="{'is-invalid': signinForm.get('email')?.invalid && signinForm.get('email')?.touched}">
+
+                        <label for="floatingInput">Email ID</label>
+
+                        <div class="invalid-feedback"
+                            *ngIf="signinForm.get('email')?.invalid && signinForm.get('email')?.touched">
+                            <div *ngIf="signinForm.get('email')?.errors?.['required']">Email is required.</div>
+
+                            <div *ngIf="signinForm.get('email')?.errors?.['pattern']">Invalid email. Only alphanumeric
+                                characters are allowed.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="password" class="form-control" formControlName="password" placeholder="********"
+                            [ngClass]="{'is-invalid': signinForm.get('password')?.invalid && signinForm.get('password')?.touched}">
+                        <label>Password</label>
+
+                        <div class="invalid-feedback"
+                            *ngIf="signinForm.get('password')?.invalid && signinForm.get('password')?.touched">
+                            <div *ngIf="signinForm.get('password')?.errors?.['required']">Password is required.</div>
+
+                            <div *ngIf="signinForm.get('password')?.errors?.['pattern']">Invalid password. Ensures at
+                                least one lowercase letter, uppercase letter, one digit, one special character exists.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-1">
+                            <input type="checkbox" class="form-check-input cursorPointer" formControlName="remember">
+                        </div>
+                        <div class="col-6">
+                            Remember Me
+                        </div>
+                        <div class="col-5 text-success cursorPointer">
+                            Forgot Password?
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-primary" (click)="signin()" type="button"
+                            [disabled]="signinForm.invalid">Sign In</button>
+                    </div>
+
+
+
+                </form>
+
+                <div class="row mt-4">
+                    <div class="col-4 center">
+                        <img src="../../../assets/icon/g.svg" class="cursorPointer" height="60">
+                    </div>
+                    <div class="col-4 center mt-2">
+                        <img src="../../../assets/icon/facebook.svg" class="cursorPointer" height="40">
+                    </div>
+                    <div class="col-4 center mt-2">
+                        <img src="../../../assets/icon/x.svg" class="cursorPointer" height="40">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-7">
+                        <span>Don't have account?</span>
+                    </div>
+                    <div class="col-5 cursorPointer text-primary" (click)="redirect()">
+                        <span>Create Account</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

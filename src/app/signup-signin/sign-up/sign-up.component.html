@@ -1,0 +1,101 @@
+<div class="row centerContainer">
+    <div class="col d-flex justify-content-center mt-5">
+        <div class="card" style="width: 23rem;">
+            <div class="card-body">
+                <form autocomplete="off" [formGroup]="signupForm">
+                    <h5 class="card-title">Signup in to account</h5>
+
+
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" formControlName="username" class="form-control" placeholder="Username"
+                            [ngClass]="{'is-invalid': signupForm.get('username')?.invalid && signupForm.get('username')?.touched}">
+                        <label>Username</label>
+
+                        <div class="invalid-feedback"
+                            *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
+                            <div *ngIf="signupForm.get('username')?.errors?.['required']">Username is required.</div>
+
+                            <div *ngIf="signupForm.get('username')?.errors?.['pattern']">Invalid username. Only
+                                alphanumeric characters are
+                                allowed.
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-floating mb-3 mt-3">
+                        <input type="text" formControlName="email" class="form-control" placeholder="name@example.com"
+                            [ngClass]="{'is-invalid': signupForm.get('email')?.invalid && signupForm.get('email')?.touched}">
+                        <label>Email ID</label>
+
+                        <div class="invalid-feedback"
+                            *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+                            <div *ngIf="signupForm.get('email')?.errors?.['required']">Email is required.</div>
+
+                            <div *ngIf="signupForm.get('email')?.errors?.['pattern']">Invalid email. Only alphanumeric
+                                characters are allowed.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-floating">
+                        <input type="password" class="form-control" formControlName="password" placeholder="********"
+                            [ngClass]="{'is-invalid': signupForm.get('password')?.invalid && signupForm.get('password')?.touched}">
+                        <label>Password</label>
+                        <span>
+                            {{signupForm.get('password')?.value}}
+                        </span>
+
+                        <div class="invalid-feedback"
+                            *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+                            <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</div>
+
+                            <div *ngIf="signupForm.get('password')?.errors?.['pattern']">Invalid password. Ensures at
+                                least one lowercase letter, uppercase letter, one digit, one special character exists.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-1">
+                            <input type="checkbox" class="form-check-input cursorPointer" formControlName="policy">
+                        </div>
+                        <div class="col-11">
+                            Agree with Privacy Policy
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button class="btn btn-primary" (click)="signup()" type="button"
+                            [disabled]="signupForm.invalid || signupForm.get('policy')?.value == false">Sign Up</button>
+                    </div>
+
+
+
+                </form>
+
+                <div class="row mt-4">
+                    <div class="col-4 center">
+                        <img src="../../../assets/icon/g.svg" class="cursorPointer" height="60">
+                    </div>
+                    <div class="col-4 center mt-2">
+                        <img src="../../../assets/icon/facebook.svg" class="cursorPointer" height="40">
+                    </div>
+                    <div class="col-4 center mt-2">
+                        <img src="../../../assets/icon/x.svg" class="cursorPointer" height="40">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-9">
+                        <span>Already have an account?</span>
+                    </div>
+                    <div class="col-3 cursorPointer text-primary" (click)="redirect()">
+                        <span>Sign In</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
