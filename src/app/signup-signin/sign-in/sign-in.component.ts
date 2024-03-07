@@ -12,7 +12,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-sign-in',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.css',
 })
@@ -43,7 +43,11 @@ export class SignInComponent implements OnInit {
   }
 
   signin() {
-    let userData: any = JSON.parse(localStorage.getItem('user_details') || '');
+    let item = localStorage.getItem('user_details');
+    let userData: any = null;
+    if (item != null) {
+      userData = JSON.parse(item);
+    }
     if (
       this.signinForm.get('email')?.value == 'shivamshokeen67@gmail.com' &&
       this.signinForm.get('password')?.value == 'superadmin@A1'
@@ -53,17 +57,16 @@ export class SignInComponent implements OnInit {
         JSON.stringify(this.signinForm.value)
       );
       this.router.navigate(['/dashboard']);
-    }
-
-    if (
-      userData != '' &&
-      this.signinForm.get('email')?.value == userData.email &&
-      this.signinForm.get('password')?.value == userData.password
+    } else if (
+      userData != null &&
+      this.signinForm.get('email')?.value == userData?.email &&
+      this.signinForm.get('password')?.value == userData?.password
     ) {
-      this.router.navigate(['/dashboard']);
       if (this.signinForm.get('remember')?.value == false) {
         localStorage.removeItem('user_details');
       }
+
+      this.router.navigate(['/dashboard']);
     } else {
       this.toast.error('Invalid Credentails');
     }
