@@ -27,10 +27,10 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'not-found',
+    redirectTo: '404',
   },
   {
-    path: 'not-found',
+    path: '404',
     component: NotfoundComponent,
   },
 ];

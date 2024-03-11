@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   login(token: string): void {
     localStorage.setItem('user_details', token);
@@ -15,7 +16,10 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('user_details') !== null;
+    let data = false;
+    if (isPlatformBrowser(this.platformId)) {
+      data = localStorage.getItem('user_details') !== null ? true : false;
+    }
+    return data;
   }
-  
 }

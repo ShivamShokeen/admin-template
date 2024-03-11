@@ -1,3 +1,14 @@
 <div class="container-fluid">
-  <router-outlet></router-outlet>
+  <div class="row" *ngIf="authService.isLoggedIn()">
+    <div class="col-3">
+      <app-sidemenu></app-sidemenu>
+    </div>
+
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <router-outlet *ngIf="!authService.isLoggedIn()"></router-outlet>
+
 </div>
