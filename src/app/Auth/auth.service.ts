@@ -7,7 +7,7 @@ import { CanActivateChild, Router } from '@angular/router';
 })
 export class AuthService {
   static isAuthenticated() {
-      throw new Error('Method not implemented.');
+    throw new Error('Method not implemented.');
   }
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -20,6 +20,7 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('user_details');
+    this.router.navigate(['sign-in']);
   }
 
   isLoggedIn(): boolean {
@@ -38,14 +39,4 @@ export class AuthService {
     return data;
   }
 
-  // canActivate(): boolean {
-  //   if (this.isLoggedIn()) {
-  //     console.clear();
-  //     console.log('this.isLoggedIn()', this.isLoggedIn());
-  //     return true;
-  //   } else {
-  //     // this.router.navigate(['/sign-in']);
-  //     return false;
-  //   }
-  // }
 }

@@ -23,7 +23,10 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
+    loadChildren: () =>
+      import('./dashboard/dashboard-routing.module').then(
+        (m) => m.DashboardRoutingModule
+      ),
   },
   {
     path: '**',

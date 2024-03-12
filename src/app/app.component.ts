@@ -1,12 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Event, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './Auth/auth.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
     MatButtonModule,
     HeaderComponent,
     FooterComponent,
-    SidemenuComponent
+    SidemenuComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -26,12 +27,24 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
 export class AppComponent {
   showFiller = false;
   @ViewChild('drawer') drawer!: MatDrawer;
+  private urlSubscription: Subscription = new Subscription();
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
-  ngAfterViewInit(): void {
-    this.toggle();
+  ngOnInit(): void {
+    this.urlSubscription = this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        if (
+          (event.url == '/sign-up' || event.url == '/sign-in') &&
+          this.authService.isAuthenticated() == true
+        ) {
+          this.router.navigate(['/dashboard']);
+        }
+      }
+    });
   }
+
+  ngAfterViewInit(): void {}
 
   toggle() {
     this.drawer?.toggle();
