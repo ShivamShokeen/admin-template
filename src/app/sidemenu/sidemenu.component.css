@@ -1,0 +1,16 @@
+.svgHeight {
+    height: 20px;
+}
+
+.highlight {
+    background-color: lightblue;
+    padding: 6px;
+}
+
+.no-border {
+    border: none !important;
+}
+
+li.cursorPointer:focus-visible {
+    outline: none !important;
+}

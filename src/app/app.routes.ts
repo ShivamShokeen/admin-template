@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
 import { SignInComponent } from './signup-signin/sign-in/sign-in.component';
 import { SignUpComponent } from './signup-signin/sign-up/sign-up.component';
-import { DashboardComponent } from './signup-signin/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { sign } from 'crypto';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { AuthguardService } from './Auth/authguard.service';
+import { AuthService } from './Auth/auth.service';
+import { canActivate } from './Auth/Guard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -22,15 +23,17 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthguardService],
+    loadChildren: () =>
+      import('./dashboard/dashboard-routing.module').then(
+        (m) => m.DashboardRoutingModule
+      ),
   },
   {
     path: '**',
-    redirectTo: 'not-found',
+    redirectTo: '404',
   },
   {
-    path: 'not-found',
+    path: '404',
     component: NotfoundComponent,
   },
 ];

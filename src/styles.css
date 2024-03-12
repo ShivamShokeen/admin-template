@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-body {
-    background: #0C359E;
-}
+@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
 
 .card {
     border-radius: 10px;
@@ -10,6 +8,53 @@ body {
 
 .form-control {
     border-radius: 10px !important;
+}
+
+/* Sidemenu */
+.sidebar-width {
+    width: 300px !important;
+}
+
+.sidebar-width .mat-drawer-inner-container {
+    overflow: hidden !important;
+}
+
+.text-align-center {
+    text-align: center !important;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+    width: 60%;
+    height: 60%;
+}
+
+.object-fit-cover {
+    width: 60%;
+    height: 60%;
+    object-fit: cover;
+}
+
+.example-container {
+    height: 100vh;
+}
+
+.example-sidenav {
+    padding: 20px;
+}
+
+/* Sidemenu */
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    width: 100%;
 }
 
 .centerContainer {
@@ -26,4 +71,12 @@ body {
 
 .cursorPointer {
     cursor: pointer;
+}
+
+.text-align-end {
+    text-align: end;
+}
+
+.text-align-start {
+    text-align: start;
 }
