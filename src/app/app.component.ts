@@ -1,18 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidemenuComponent } from './sidemenu/sidemenu.component';
 import { AuthService } from './Auth/auth.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { SidemenuComponent } from './sidemenu/sidemenu.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet,SidemenuComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    MatSidenavModule,
+    MatButtonModule,
+    HeaderComponent,
+    FooterComponent,
+    SidemenuComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'admin-template';
-  constructor(public authService:AuthService){}
+  showFiller = false;
+  @ViewChild('drawer') drawer!: MatDrawer;
+
+  constructor(public authService: AuthService) {}
+
+  ngAfterViewInit(): void {
+    this.toggle();
+  }
+
+  toggle() {
+    this.drawer?.toggle();
+  }
 }

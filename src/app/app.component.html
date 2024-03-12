@@ -1,14 +1,25 @@
-<div class="container-fluid">
-  <div class="row" *ngIf="authService.isLoggedIn()">
-    <div class="col-3">
-      <app-sidemenu></app-sidemenu>
+<mat-drawer-container class="example-container" autosize *ngIf="authService.isLoggedIn()">
+  <mat-drawer #drawer class="example-sidenav sidebar-width" mode="push">
+
+  <app-sidemenu (toggleTrigger)="toggle()"></app-sidemenu>
+
+  </mat-drawer>
+
+  <mat-drawer-content class="p-2">
+    <div class="header">
+      <app-header (toggleTrigger)="toggle()"></app-header>
     </div>
 
-    <div class="col-9">
+    <div>
       <router-outlet></router-outlet>
     </div>
-  </div>
 
-  <router-outlet *ngIf="!authService.isLoggedIn()"></router-outlet>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </mat-drawer-content>
 
-</div>
+
+</mat-drawer-container>
+
+<router-outlet *ngIf="!authService.isLoggedIn()"></router-outlet>

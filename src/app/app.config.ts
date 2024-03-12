@@ -8,6 +8,7 @@ import {
 } from '@angular/platform-browser';
 import { provideToastr } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
       preventDuplicates: true,
     }),
     importProvidersFrom([BrowserModule, BrowserAnimationsModule]),
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
 };

@@ -1,11 +1,18 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { CanActivateChild, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  static isAuthenticated() {
+      throw new Error('Method not implemented.');
+  }
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private router: Router
+  ) {}
 
   login(token: string): void {
     localStorage.setItem('user_details', token);
@@ -22,4 +29,23 @@ export class AuthService {
     }
     return data;
   }
+
+  isAuthenticated(): any {
+    let data = false;
+    if (isPlatformBrowser(this.platformId)) {
+      data = localStorage.getItem('user_details') !== null ? true : false;
+    }
+    return data;
+  }
+
+  // canActivate(): boolean {
+  //   if (this.isLoggedIn()) {
+  //     console.clear();
+  //     console.log('this.isLoggedIn()', this.isLoggedIn());
+  //     return true;
+  //   } else {
+  //     // this.router.navigate(['/sign-in']);
+  //     return false;
+  //   }
+  // }
 }
