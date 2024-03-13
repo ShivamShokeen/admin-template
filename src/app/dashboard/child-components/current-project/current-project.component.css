@@ -1,0 +1,43 @@
+.nav-tabs {
+    display: flex;
+    justify-content: space-between;
+    /* Distribute tabs evenly across the screen */
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-tabs .nav-item {
+    flex-grow: 1;
+    /* Allow tabs to grow and fill the available space */
+    text-align: center;
+    /* Center the text inside each tab */
+    margin-bottom: -1px;
+    /* width: 20%; */
+    /* Set a specific width for the tabs */
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: #6c757d;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link:hover {
+    border-color: #e9ecef #e9ecef #ddd;
+    background-color: #e9ecef;
+}
+
+.nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #ddd black #ddd;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.15);
+}
+
+
+.dropdown-toggle-x::after {
+    display: none;
+}

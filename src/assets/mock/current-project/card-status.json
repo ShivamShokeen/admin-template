@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Completed",
+    "cmp_task_count": 18,
+    "sub_title": "Task",
+    "pending_task_count": 21,
+    "pending_task_title": "Completed",
+    "color": "text-primary"
+  },
+  {
+    "id": 2,
+    "title": "Due",
+    "cmp_task_count": 20,
+    "sub_title": "Task",
+    "pending_task_count": 30,
+    "pending_task_title": "Completed",
+    "color": "text-danger"
+  },
+  {
+    "id": 3,
+    "title": "Issues",
+    "cmp_task_count": 20,
+    "sub_title": "Task",
+    "pending_task_count": 30,
+    "pending_task_title": "Completed",
+    "color": "text-warning"
+  },
+  {
+    "id": 3,
+    "title": "Features",
+    "cmp_task_count": 40,
+    "sub_title": "Task",
+    "pending_task_count": 60,
+    "pending_task_title": "Completed",
+    "color": "text-success"
+  }
+]

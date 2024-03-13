@@ -9,6 +9,7 @@ import {
 import { provideToastr } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,7 +19,11 @@ export const appConfig: ApplicationConfig = {
       timeOut: 1000,
       preventDuplicates: true,
     }),
-    importProvidersFrom([BrowserModule, BrowserAnimationsModule]),
+    importProvidersFrom([
+      BrowserModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+    ]),
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
 };

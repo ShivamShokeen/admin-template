@@ -45,7 +45,7 @@ export class AppComponent {
   }
 
   ngAfterViewInit(): void {
-    this.toggle();
+    // this.toggle();
   }
 
   toggle() {

@@ -1,0 +1,98 @@
+[
+  {
+    "id": 1,
+    "name": "Bright Attire",
+    "fav": 1,
+    "gif": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXQxZ25id3hsampteTN4NGllNDI4a2NuaWY3aTZlbWZzMDFubXUwaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif"
+  },
+  {
+    "id": 2,
+    "name": "Funky Town",
+    "fav": 1,
+    "gif": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHZhdGc2aTUyMjUybG1ieXVwcDFuMTBldXI5cHhlejl1bHlhOHUydyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uB86ZyWQsnFSGYe2sA/giphy.gif"
+  },
+  {
+    "id": 3,
+    "name": "Logister",
+    "fav": 1,
+    "gif": "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHBoOGo5eWp4b3NlZGdubDA0dXNhMHRxaWVpdjNodXo1aXVnbGhyeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26tn33aiTi1jkl6H6/giphy.gif"
+  },
+  {
+    "id": 4,
+    "name": "Glowvolt",
+    "fav": 1,
+    "gif": "https://media0.giphy.com/media/R03zWv5p1oNSQd91EP/giphy.webp?cid=ecf05e47xaattkenigydna1clrx61kccuvo8o3d43dxifvcf&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 5,
+    "name": "Nutriyummy",
+    "fav": 1,
+    "gif": "https://media1.giphy.com/media/3ov9jNziFTMfzSumAw/200.webp?cid=ecf05e47g5i2tc3o24ddvltk23qwbrhdz0wx2e1wldnq7bg4&ep=v1_gifs_search&rid=200.webp&ct=g"
+  },
+  {
+    "id": 6,
+    "name": "Capfinance",
+    "fav": 1,
+    "gif": "https://media2.giphy.com/media/765ccrAiB0g9z6EApL/giphy.webp?cid=ecf05e473254ff9u3zd847g8uwolb85ddrqb36tkd0oko1mv&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 7,
+    "name": "Kingfish Fresh",
+    "fav": 0,
+    "gif": "https://media3.giphy.com/media/hpF9R9M1PHN5e5liSx/giphy.webp?cid=ecf05e473254ff9u3zd847g8uwolb85ddrqb36tkd0oko1mv&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 8,
+    "name": "Wideband",
+    "fav": 0,
+    "gif": "https://media4.giphy.com/media/fuJPZBIIqzbt1kAYVc/giphy.webp?cid=ecf05e4739ii9zys55ouaa67v2iga4ycb13s20o8nieeh0ig&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 9,
+    "name": "Ensemble",
+    "fav": 0,
+    "gif": "https://media1.giphy.com/media/iGpHt2H22k1orjgT9b/giphy.webp?cid=ecf05e4739ii9zys55ouaa67v2iga4ycb13s20o8nieeh0ig&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 10,
+    "name": "Buildence",
+    "fav": 0,
+    "gif": "https://media2.giphy.com/media/mTPjPA6SSXgTsnZ1Dh/200.webp?cid=ecf05e47cz3rqjva8g64t1ovsqg3ozybr614o57rbu6kgrdr&ep=v1_gifs_search&rid=200.webp&ct=g"
+  },
+  {
+    "id": 11,
+    "name": "Omega Design",
+    "fav": 0,
+    "gif": "https://media0.giphy.com/media/IgodAsQDwvWeWU2ZDY/giphy.webp?cid=ecf05e47cz3rqjva8g64t1ovsqg3ozybr614o57rbu6kgrdr&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 12,
+    "name": "Refize",
+    "fav": 0,
+    "gif": "https://media1.giphy.com/media/a8rlSHPozsTEuh1ibJ/giphy.webp?cid=ecf05e47f6hjzr0ofxllhygazrrh660ejuhax0eb086llwu8&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 13,
+    "name": "Probiz",
+    "fav": 0,
+    "gif": "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeThlNDc4enVqZGRieXYzc3Ewd2RyNHQycTl0YjFpaXh6czFiNmxweCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bGgsc5mWoryfgKBx1u/giphy.webp"
+  },
+  {
+    "id": 14,
+    "name": "Storksie",
+    "fav": 0,
+    "gif": "https://media3.giphy.com/media/CuuSHzuc0O166MRfjt/giphy.webp?cid=790b7611y8e478zujddbyv3sq0wdr4t2q9tb1iixzs1b6lpx&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  },
+  {
+    "id": 15,
+    "name": "Silver Cradle",
+    "fav": 0,
+    "gif": "https://media0.giphy.com/media/Ws6T5PN7wHv3cY8xy8/200.webp?cid=790b7611y8e478zujddbyv3sq0wdr4t2q9tb1iixzs1b6lpx&ep=v1_gifs_search&rid=200.webp&ct=g"
+  },
+  {
+    "id": 16,
+    "name": "Washla",
+    "fav": 0,
+    "gif": "https://media1.giphy.com/media/6ib6KPmkeAjDTxMxij/giphy.webp?cid=790b7611y8e478zujddbyv3sq0wdr4t2q9tb1iixzs1b6lpx&ep=v1_gifs_search&rid=giphy.webp&ct=g"
+  }
+]

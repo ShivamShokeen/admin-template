@@ -4,6 +4,8 @@ import { CurrentProjectComponent } from './child-components/current-project/curr
 import { AnalyticsComponent } from './child-components/analytics/analytics.component';
 import { FinanceComponent } from './child-components/finance/finance.component';
 import { UpcomingProjectComponent } from './child-components/upcoming-project/upcoming-project.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
   { path: '', redirectTo: 'current-project', pathMatch: 'full' },
