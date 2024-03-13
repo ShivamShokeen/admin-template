@@ -44,7 +44,9 @@ export class AppComponent {
     });
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void {
+    this.toggle();
+  }
 
   toggle() {
     this.drawer?.toggle();

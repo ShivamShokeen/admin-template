@@ -3,8 +3,18 @@
 }
 
 .highlight {
-    background-color: lightblue;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-bg-opacity: .12;
     padding: 6px;
+    border-radius: 8px;
+}
+
+.hover:hover {
+    background: rgb(255 255 255 / var(--tw-bg-opacity));
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    --tw-bg-opacity: .12;
+    padding: 6px;
+    border-radius: 8px;
 }
 
 .no-border {

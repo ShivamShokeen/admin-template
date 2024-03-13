@@ -1,5 +1,5 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav sidebar-width" mode="push" *ngIf="authService.isAuthenticated()">
+  <mat-drawer #drawer class="example-sidenav sidebar-width bg-color" mode="push" *ngIf="authService.isAuthenticated()">
 
     <app-sidemenu (toggleTrigger)="toggle()"></app-sidemenu>
 
