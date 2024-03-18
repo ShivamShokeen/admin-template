@@ -43,7 +43,6 @@ export class SidemenuComponent implements OnInit {
     this.urlSubscription = this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
         this.routerURL = event.url;
-        console.log('1', event.url);
       }
     });
   }

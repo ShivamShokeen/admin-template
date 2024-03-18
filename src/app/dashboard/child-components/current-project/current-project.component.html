@@ -54,6 +54,55 @@
         <!-- Home -->
         <div *ngIf="subTab == 1">
 
+
+            <div class=" row mb-4">
+                <div class="col-3" *ngFor="let data of cardList">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title d-flex justify-content-between align-items-center">
+                                <h5>{{data?.title}}</h5>
+                                <div class="dropdown">
+                                    <i class="fa-solid fa-ellipsis-vertical dropdown-toggle dropdown-toggle-x cursorPointer"
+                                        id="dropdownMenuLink" data-bs-toggle="dropdown"></i>
+
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a class="dropdown-item" href="javascript:void(0)">Yesterday</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)">2
+                                                days ago</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0)">1
+                                                week ago</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <h5></h5>
+
+                            <div class="card-text">
+                                <apx-chart [series]="data.percentage" [chart]="chartOptions.chart"
+                                    [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"
+                                    [stroke]="chartOptions.stroke" [fill]="chartOptions.fill"></apx-chart>
+                            </div>
+
+                            <div class="card-text d-flex justify-content-center">
+                                <h1 class="{{data?.color}}">
+                                    {{data?.total_task_count}}</h1>
+                            </div>
+                            <h6 class="card-subtitle text-primary d-flex justify-content-center {{data?.color}}">
+                                Total
+                                Task</h6>
+                            <div class=" d-flex justify-content-center text-muted mt-2">
+                                {{data?.total_task_title}}:
+                                {{data?.rem_task_count}}
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <div class="row mb-4">
                 <div class="col-6 d-flex" style="align-items: stretch;">
                     <div class="card w-100">
@@ -162,37 +211,34 @@
                             <h5></h5>
 
                             <div class="card-content">
-                                <div class="list-group list-group-flush">
-                                    <div class="list-group-item list-group-item-action" aria-current="true">
 
-                                        <div *ngIf="notesList.length == 0" class="d-flex justify-content-center">
-                                            Create one
+
+                                <div *ngIf="notesList.length == 0" class="d-flex justify-content-center">
+                                    Create one
+                                </div>
+
+
+                                <ul class="list-group list-group-flush">
+
+                                    <li class="list-group-item mb-3" *ngFor="let data of notesList; let i = index">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                {{data?.content | wordLimit:10}}
+                                            </div>
+
+                                            <div class="col-2">
+                                                <i (click)="updateNotesModal(data)"
+                                                    class="fas fa-edit text-success cursorPointer text-end mx-2 fa-1x"></i>
+                                                <i (click)="removeNotes(i)"
+                                                    class="fas fa-trash-alt text-danger cursorPointer text-end fa-1x"></i>
+                                            </div>
                                         </div>
-
-
-                                        <ul class="list-group list-group-flush">
-
-                                            <li class="list-group-item" *ngFor="let data of notesList; let i = index">
-                                                <div class="row">
-                                                    <div class="col-10">
-                                                        {{data?.content | wordLimit:10}}
-                                                    </div>
-
-                                                    <div class="col-2">
-                                                        <i (click)="updateNotesModal(data)"
-                                                            class="fas fa-edit text-success cursorPointer text-end mx-2 fa-1x"></i>
-                                                        <i (click)="removeNotes(i)"
-                                                            class="fas fa-trash-alt text-danger cursorPointer text-end fa-1x"></i>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                    </li>
+                                </ul>
 
 
 
 
-                                    </div>
-                                </div>
                             </div>
 
 
@@ -205,53 +251,6 @@
 
 
 
-
-            <div class=" row mb-4">
-                <div class="col-3" *ngFor="let data of cardList">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title d-flex justify-content-between align-items-center">
-                                <h5>{{data?.title}}</h5>
-                                <div class="dropdown">
-                                    <i class="fa-solid fa-ellipsis-vertical dropdown-toggle dropdown-toggle-x cursorPointer"
-                                        id="dropdownMenuLink" data-bs-toggle="dropdown"></i>
-
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <li><a class="dropdown-item" href="javascript:void(0)">Yesterday</a>
-                                        </li>
-                                        <li><a class="dropdown-item" href="javascript:void(0)">2
-                                                days ago</a></li>
-                                        <li><a class="dropdown-item" href="javascript:void(0)">1
-                                                week ago</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <h5></h5>
-
-                            <div class="card-text">
-                                <apx-chart [series]="data.percentage" [chart]="chartOptions.chart"
-                                    [plotOptions]="chartOptions.plotOptions" [labels]="chartOptions.labels"
-                                    [stroke]="chartOptions.stroke" [fill]="chartOptions.fill"></apx-chart>
-                            </div>
-
-                            <div class="card-text d-flex justify-content-center">
-                                <h1 class="{{data?.color}}">
-                                    {{data?.total_task_count}}</h1>
-                            </div>
-                            <h6 class="card-subtitle text-primary d-flex justify-content-center {{data?.color}}">
-                                Total
-                                Task</h6>
-                            <div class=" d-flex justify-content-center text-muted mt-2">
-                                {{data?.total_task_title}}:
-                                {{data?.rem_task_count}}
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
 
