@@ -33,7 +33,8 @@
             <div class="col">
                 <p>Dashboard</p>
                 <ul class="fa-ul">
-                    <li class="cursorPointer hover" [ngClass]="routerURL == '/dashboard/current-project' ? 'highlight': ''"
+                    <li class="cursorPointer hover"
+                        [ngClass]="routerURL == '/dashboard/current-project' ? 'highlight': ''"
                         [routerLink]="['/dashboard/current-project']" (click)="trigger()">
                         <span class="fa-li">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -45,7 +46,8 @@
                         </span>Current Project
                     </li>
 
-                    <li class="mt-2 cursorPointer hover" [ngClass]="routerURL == '/dashboard/analytics' ? 'highlight': ''"
+                    <li class="mt-2 cursorPointer hover"
+                        [ngClass]="routerURL == '/dashboard/analytics' ? 'highlight': ''"
                         [routerLink]="['/dashboard/analytics']" (click)="trigger()">
                         <span class="fa-li">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -2,7 +2,7 @@
     <div class="col d-flex justify-content-center mt-5">
         <div class="card" style="width: 23rem;">
             <div class="card-body">
-                <form autocomplete="off" [formGroup]="signupForm">
+                <form autocomplete="off" [formGroup]="signupForm" (keydown.enter)="signupForm.valid ? signup() : false ">
                     <h5 class="card-title">Signup in to account</h5>
 
 

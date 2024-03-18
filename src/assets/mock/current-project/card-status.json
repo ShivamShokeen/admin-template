@@ -2,37 +2,41 @@
   {
     "id": 1,
     "title": "Completed",
-    "cmp_task_count": 18,
+    "total_task_count": 21,
+    "total_task_title": "Remaining",
+    "rem_task_count": 10,
     "sub_title": "Task",
-    "pending_task_count": 21,
-    "pending_task_title": "Completed",
-    "color": "text-primary"
+    "color": "text-primary",
+    "percentage": [25]
   },
   {
     "id": 2,
     "title": "Due",
-    "cmp_task_count": 20,
+    "total_task_count": 40,
+    "total_task_title": "Remaining",
+    "rem_task_count": 20,
     "sub_title": "Task",
-    "pending_task_count": 30,
-    "pending_task_title": "Completed",
-    "color": "text-danger"
+    "color": "text-danger",
+    "percentage": [40]
   },
   {
     "id": 3,
     "title": "Issues",
-    "cmp_task_count": 20,
+    "total_task_count": 30,
+    "total_task_title": "Remaining",
+    "rem_task_count": 25,
     "sub_title": "Task",
-    "pending_task_count": 30,
-    "pending_task_title": "Completed",
-    "color": "text-warning"
+    "color": "text-warning",
+    "percentage": [60]
   },
   {
     "id": 3,
     "title": "Features",
-    "cmp_task_count": 40,
+    "total_task_count": 60,
+    "total_task_title": "Remaining",
+    "rem_task_count": 40,
     "sub_title": "Task",
-    "pending_task_count": 60,
-    "pending_task_title": "Completed",
-    "color": "text-success"
+    "color": "text-success",
+    "percentage": [70]
   }
 ]

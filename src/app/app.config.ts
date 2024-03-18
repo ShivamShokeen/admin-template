@@ -10,6 +10,8 @@ import { provideToastr } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +25,7 @@ export const appConfig: ApplicationConfig = {
       BrowserModule,
       BrowserAnimationsModule,
       HttpClientModule,
+      ModalModule
     ]),
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],

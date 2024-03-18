@@ -6,6 +6,8 @@ import { FinanceComponent } from './child-components/finance/finance.component';
 import { UpcomingProjectComponent } from './child-components/upcoming-project/upcoming-project.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 const routes: Routes = [
   { path: '', redirectTo: 'current-project', pathMatch: 'full' },
@@ -16,7 +18,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes),
+    NgApexchartsModule,
+    BsDatepickerModule,
+  ],
   exports: [RouterModule],
 })
 export class DashboardRoutingModule {}
