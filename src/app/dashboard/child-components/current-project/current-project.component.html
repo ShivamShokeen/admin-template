@@ -51,6 +51,16 @@
 
         </ul>
 
+        <div class="text-align-end mb-4">
+            <img src="../../../../assets/icon/github-mark.svg" width="60" class="cursorPointer mx-2"
+                (click)="redirectURL('github')" title="Github">
+            <img src="../../../../assets/icon/docker-mark-blue.svg" width="60" class="cursorPointer mx-2"
+                (click)="redirectURL('docker')" title="Docker">
+            <img src="../../../../assets/icon/digital-ocean.svg" width="60" class="cursorPointer mx-2"
+                (click)="redirectURL('digital-ocean')" title="Digital Ocean">
+            <img src="https://serverpilot.io/assets/images/logos-badges/serverpilot-logo-vertical-black.svg" width="80"
+                class="cursorPointer" (click)="redirectURL('serverpiolt')" title="Server Pilot">
+        </div>
         <!-- Home -->
         <div *ngIf="subTab == 1">
 
@@ -130,7 +140,7 @@
                                     </div>
                                     <div class="col-3 d-flex justify-content-center tooltip-container">
                                         <img src="../../../../assets/icon/google-meet.svg" width="50%"
-                                            class="tooltip-target" (click)="meetingURL('google')">
+                                            class="tooltip-target" (click)="redirectURL('google')">
 
                                         <div class="tooltip-content">
                                             Instant Google Meeting
@@ -139,7 +149,7 @@
 
                                     <div class="col-3 d-flex justify-content-center tooltip-container">
                                         <img src="../../../../assets/icon/skype-seeklogo.svg" width="50%"
-                                            class="tooltip-target" (click)="meetingURL('skype')">
+                                            class="tooltip-target" (click)="redirectURL('skype')">
 
                                         <div class="tooltip-content">
                                             Instant Skype Meeting
@@ -148,7 +158,7 @@
 
                                     <div class="col-3 d-flex justify-content-center tooltip-container">
                                         <img src="../../../../assets/icon/Teams_Logo.svg" width="50%"
-                                            class="tooltip-target" (click)="meetingURL('team')">
+                                            class="tooltip-target" (click)="redirectURL('team')">
 
                                         <div class="tooltip-content">
                                             Instant Team Meeting
@@ -157,7 +167,7 @@
 
                                     <div class="col-3 d-flex justify-content-center tooltip-container">
                                         <img src="../../../../assets/icon/zm-logo.svg" width="50%"
-                                            class="tooltip-target" (click)="meetingURL('zoom')">
+                                            class="tooltip-target" (click)="redirectURL('zoom')">
 
                                         <div class="tooltip-content">
                                             Instant Zoom Meeting
@@ -259,7 +269,15 @@
 
         <!-- Budget -->
         <div *ngIf="subTab == 2">
-            Budget
+
+
+            <div class="row">
+                <div class="col-12">
+                    Project Journey
+                    <apx-chart [series]="lineChartOptions.series" [chart]="lineChartOptions.chart"
+                        [xaxis]="lineChartOptions.xaxis"></apx-chart>
+                </div>
+            </div>
             <!-- https://apexcharts.com/docs/chart-types/radar/ -->
         </div>
         <!-- Budget -->

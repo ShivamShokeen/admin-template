@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ModalDirective, ModalModule } from 'ngx-bootstrap/modal';
-
+import { Subject, BehaviorSubject } from 'rxjs';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -17,6 +17,7 @@ import {
   ApexStroke,
   ApexNonAxisChartSeries,
   ApexFill,
+  ApexResponsive,
 } from 'ng-apexcharts';
 import {
   FormBuilder,
@@ -29,7 +30,7 @@ import { CommonFormService } from '../../../utility/common-form.service';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { WordLimitPipe } from '../../../utility/word-limit.pipe';
-
+import { Observable } from 'rxjs';
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
@@ -38,6 +39,18 @@ export type ChartOptions = {
   fill: ApexFill;
   stroke: ApexStroke;
 };
+
+export type LineChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  title: ApexTitleSubtitle;
+};
+
+interface UserInterface {
+  name: string;
+  age: number;
+}
 
 @Component({
   selector: 'app-current-project',
@@ -55,12 +68,20 @@ export type ChartOptions = {
   styleUrl: './current-project.component.css',
 })
 export class CurrentProjectComponent implements OnInit {
+  users: UserInterface = { age: 2, name: 'shivam' };
   companyList: any[] = [];
   tabIndex: number | null = null;
   subTab: number = 1;
   cardList: any[] = [];
+
+  // Charts
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: ChartOptions;
+
+  public lineChartOptions: LineChartOptions;
+
+  //  Charts
+
   notesList: any[] = [];
   notesForm: FormGroup = this.fb.group({
     id: null,
@@ -81,6 +102,7 @@ export class CurrentProjectComponent implements OnInit {
     public utilities: CommonFormService,
     private toastService: ToastrService
   ) {
+    this.subTab = 2;
     this.notesList = [
       {
         id: 1,
@@ -128,6 +150,50 @@ export class CurrentProjectComponent implements OnInit {
         date: new Date(new Date().getTime() + 6 * 60 * 60 * 1000),
       },
     ];
+
+    this.lineChartOptions = {
+      series: [
+        {
+          name: '2022',
+          data: [0, 5, 10, 5, 20, 25, 40, 51, 45, 50, 50, 50],
+        },
+        {
+          name: '2023',
+          data: [25, 30, 35, 40, 60, 70, 70, 71, 75, 75, 60, 60],
+        },
+        {
+          name: '2024',
+          data: [50, 60, 65],
+        },
+      ],
+      chart: {
+        height: 350,
+        type: 'line',
+        toolbar: {
+          show: true,
+        },
+      },
+      title: {
+        text: 'Project Timeline',
+        align: 'left',
+      },
+      xaxis: {
+        categories: [
+          'Jan',
+          'Feb',
+          'Mar',
+          'Apr',
+          'May',
+          'Jun',
+          'Jul',
+          'Aug',
+          'Sep',
+          'Oct',
+          'Nov',
+          'Dec',
+        ],
+      },
+    };
 
     this.chartOptions = {
       series: [75],
@@ -210,7 +276,57 @@ export class CurrentProjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.tabIndex = 0;
+    this.tabIndex = 1;
+    this.callSub();
+  }
+
+  callSub() {
+    // enum Color {
+    //   Red,
+    //   Green,
+    //   Blue,
+    //   White,
+    // }
+    // let c: Color = Color.Green;
+    // console.log('c', c);
+    // console.log('users', this.users);
+    // let observable = new Observable((observer) => {
+    //   observer.next('Hello');
+    //   observer.next('World');
+    // });
+    // observable.subscribe((val) => console.log('val', val));
+    // let subject = new Subject();
+    // Speaker starts talking
+    // subject.next('Hello!');
+    // Listener 1 enters the room
+    // subject.subscribe((data) => console.log('Listener 1: ' + data)); // Output: Listener 1: How are you?
+    // subject.next('How are you?');
+    // // Listener 2 enters the room
+    // subject.subscribe((data) => console.log('Listener 2: ' + data)); // Output: Listener 2: Goodbye!
+    // subject.next('Goodbye!');
+    // let behSubject = new BehaviorSubject('Hello!');
+    // // Video starts
+    // behSubject.next('Hello!');
+    // // Viewer 1 starts watching
+    // behSubject.subscribe((data) => console.log('Viewer 1: ' + data)); // Output: Viewer 1: Hello!, Viewer 1: How are you?
+    // behSubject.next('How are you?');
+    // // Viewer 2 starts watching
+    // behSubject.subscribe((data) => console.log('Viewer 2: ' + data)); // Output: Viewer 2: How are you?, Viewer 2: Goodbye!
+    // behSubject.next('Goodbye!');
+    // const subject = new Subject<number>();
+    // subject.subscribe((x) => console.log('subject Observer 1: ' + x));
+    // subject.next(1);
+    // subject.subscribe((x) => console.log('subject Observer 2: ' + x));
+    // subject.next(2);
+    // const behSubject = new BehaviorSubject<number>(123);
+    // behSubject.subscribe((x) =>
+    //   console.log('BehaviorSubject Observer 1: ' + x)
+    // );
+    // behSubject.next(456);
+    // behSubject.subscribe((x) =>
+    //   console.log('BehaviorSubject Observer 2: ' + x)
+    // );
+    // behSubject.next(789);
   }
 
   getAll() {
@@ -312,7 +428,7 @@ export class CurrentProjectComponent implements OnInit {
     }
   }
 
-  meetingURL(type: string) {
+  redirectURL(type: string) {
     if (type == 'google') {
       window.open('https://meet.google.com/');
     }
@@ -326,6 +442,22 @@ export class CurrentProjectComponent implements OnInit {
     }
     if (type == 'zoom') {
       window.open('https://app.zoom.us/wc');
+    }
+
+    if (type == 'github') {
+      window.open('https://github.com/login');
+    }
+
+    if (type == 'docker') {
+      window.open('https://login.docker.com/u/login/identifier');
+    }
+
+    if (type == 'digital-ocean') {
+      window.open('https://cloud.digitalocean.com/login');
+    }
+
+    if (type == 'serverpiolt') {
+      window.open('https://manage.serverpilot.io/login');
     }
   }
 
