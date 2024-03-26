@@ -41,3 +41,24 @@
 .dropdown-toggle-x::after {
     display: none;
 }
+
+.par-div {
+    /* position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50, -50); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.simple-div {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    /* position: absolute;
+    top: 50%;
+    bottom: 50%;
+    transform: translate(-50, -50); */
+}

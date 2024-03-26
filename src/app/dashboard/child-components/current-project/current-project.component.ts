@@ -18,6 +18,9 @@ import {
   ApexNonAxisChartSeries,
   ApexFill,
   ApexResponsive,
+  ApexYAxis,
+  ApexMarkers,
+  ApexTooltip,
 } from 'ng-apexcharts';
 import {
   FormBuilder,
@@ -31,6 +34,15 @@ import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { WordLimitPipe } from '../../../utility/word-limit.pipe';
 import { Observable } from 'rxjs';
+
+import {
+  trigger,
+  state,
+  transition,
+  style,
+  animate,
+} from '@angular/animations';
+
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
@@ -47,6 +59,29 @@ export type LineChartOptions = {
   title: ApexTitleSubtitle;
 };
 
+export type pieChartOptions = {
+  series: number[];
+  labels: string[];
+  chart: ApexChart;
+};
+
+export type radialChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  plotOptions: {
+    radar: {
+      polygon: {
+        levels: {
+          labels: {
+            show: boolean;
+          };
+        };
+      };
+    };
+  };
+};
+// xaxis: ApexXAxis;
 interface UserInterface {
   name: string;
   age: number;
@@ -66,8 +101,10 @@ interface UserInterface {
   ],
   templateUrl: './current-project.component.html',
   styleUrl: './current-project.component.css',
+  animations: [trigger('moveAnimation', [])],
 })
 export class CurrentProjectComponent implements OnInit {
+  moveState = 'initial';
   users: UserInterface = { age: 2, name: 'shivam' };
   companyList: any[] = [];
   tabIndex: number | null = null;
@@ -79,6 +116,10 @@ export class CurrentProjectComponent implements OnInit {
   public chartOptions: ChartOptions;
 
   public lineChartOptions: LineChartOptions;
+
+  public radialChartOptions: radialChartOptions;
+
+  public pieChartOptions: pieChartOptions;
 
   //  Charts
 
@@ -150,6 +191,48 @@ export class CurrentProjectComponent implements OnInit {
         date: new Date(new Date().getTime() + 6 * 60 * 60 * 1000),
       },
     ];
+
+    this.pieChartOptions = {
+      series: [15, 20, 15, 10, 15, 15, 10],
+      labels: [
+        'Marketing',
+        'App Crash',
+        'Website Crash',
+        'Server Down',
+        'Design Changes',
+        'Bugs/Issues',
+        'Negative Feedback',
+      ],
+      chart: {
+        type: 'pie',
+        height: 400,
+      },
+    };
+
+    this.radialChartOptions = {
+      series: [{ name: 'My-series', data: [40, 35, 40, 35, 25] }],
+      chart: { height: 350, type: 'radar' },
+      xaxis: {
+        categories: [
+          'Marketing',
+          'Design',
+          'Discussion',
+          'Revert',
+          'Miscellaneous',
+        ],
+      },
+      plotOptions: {
+        radar: {
+          polygon: {
+            levels: {
+              labels: {
+                show: false,
+              },
+            },
+          },
+        },
+      },
+    };
 
     this.lineChartOptions = {
       series: [

@@ -43,10 +43,16 @@
                     Features</a>
             </li>
             <li class="nav-item" (click)="subTab = 5">
-                <a [ngClass]="subTab == 5 ? 'active' : ''" class="nav-link" href="javascript:void(0)">Issues</a>
+                <a [ngClass]="subTab == 5 ? 'active' : ''" class="nav-link" href="javascript:void(0)">Project Issue</a>
             </li>
             <li class="nav-item" (click)="subTab = 6">
                 <a [ngClass]="subTab == 6 ? 'active' : ''" class="nav-link" href="javascript:void(0)">Reassign Task</a>
+            </li>
+            <li class="nav-item" (click)="subTab = 7">
+                <a [ngClass]="subTab == 7 ? 'active' : ''" class="nav-link" href="javascript:void(0)">Downfall</a>
+            </li>
+            <li class="nav-item" (click)="subTab = 8">
+                <a [ngClass]="subTab == 8 ? 'active' : ''" class="nav-link" href="javascript:void(0)">User Feedback</a>
             </li>
 
         </ul>
@@ -272,11 +278,31 @@
 
 
             <div class="row">
-                <div class="col-12">
+
+                <div class="col-6">
                     Project Journey
                     <apx-chart [series]="lineChartOptions.series" [chart]="lineChartOptions.chart"
                         [xaxis]="lineChartOptions.xaxis"></apx-chart>
                 </div>
+
+                <div class="col-6">
+                    Budget
+                    <apx-chart [series]="radialChartOptions.series" [chart]="radialChartOptions.chart"
+                        [xaxis]="radialChartOptions.xaxis"></apx-chart>
+                </div>
+
+                <div class="col-6">
+                    Downfall
+                    <apx-chart [series]="pieChartOptions.series" [chart]="pieChartOptions.chart"
+                        [labels]="pieChartOptions.labels"></apx-chart>
+                </div>
+
+                <div class="col-6">
+                    Improvements
+                </div>
+
+
+
             </div>
             <!-- https://apexcharts.com/docs/chart-types/radar/ -->
         </div>
