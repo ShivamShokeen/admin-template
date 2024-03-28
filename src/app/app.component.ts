@@ -1,4 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  OnChanges,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Event, NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { AuthService } from './Auth/auth.service';
@@ -24,7 +30,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements DoCheck {
   showFiller = false;
   @ViewChild('drawer') drawer!: MatDrawer;
   private urlSubscription: Subscription = new Subscription();
@@ -42,6 +48,10 @@ export class AppComponent {
         }
       }
     });
+  }
+
+  ngDoCheck(): void {
+    console.clear();
   }
 
   ngAfterViewInit(): void {

@@ -128,10 +128,18 @@ export class CurrentProjectComponent implements OnInit {
     id: null,
     content: [null, [Validators.required, Validators.pattern('^(?!.*  ).*$')]],
   });
+
+  improvementForm: FormGroup = this.fb.group({
+    id: null,
+    content: [null, [Validators.required, Validators.pattern('^(?!.*  ).*$')]],
+  });
+
   meetingList: any = [];
+  improvementList: any = [];
   isOpen = false;
 
   @ViewChild('notesModal') public notesModal!: ElementRef;
+  @ViewChild('improvementModal') public improvementModal!: ElementRef;
 
   date = new Date();
   minDate = new Date();
@@ -143,7 +151,7 @@ export class CurrentProjectComponent implements OnInit {
     public utilities: CommonFormService,
     private toastService: ToastrService
   ) {
-    this.subTab = 2;
+    this.subTab = 1;
     this.notesList = [
       {
         id: 1,
@@ -157,6 +165,12 @@ export class CurrentProjectComponent implements OnInit {
       {
         id: 3,
         content: 'test',
+      },
+    ];
+    this.improvementList = [
+      {
+        id: 1,
+        content: 'Server config. change',
       },
     ];
     this.meetingList = [
@@ -432,6 +446,86 @@ export class CurrentProjectComponent implements OnInit {
       });
   }
 
+  updateRadial() {
+    this.chartOptions = {
+      series: [75],
+      chart: {
+        height: 350,
+        type: 'radialBar',
+        toolbar: {
+          show: true,
+        },
+      },
+      plotOptions: {
+        radialBar: {
+          startAngle: -135,
+          endAngle: 225,
+          hollow: {
+            margin: 0,
+            size: '70%',
+            background: '#fff',
+            image: undefined,
+            position: 'front',
+            dropShadow: {
+              enabled: true,
+              top: 3,
+              left: 0,
+              blur: 4,
+              opacity: 0.24,
+            },
+          },
+          track: {
+            background: '#fff',
+            strokeWidth: '67%',
+            margin: 0, // margin is in pixels
+            dropShadow: {
+              enabled: true,
+              top: -3,
+              left: 0,
+              blur: 4,
+              opacity: 0.35,
+            },
+          },
+
+          dataLabels: {
+            show: true,
+            name: {
+              offsetY: -10,
+              show: true,
+              color: '#888',
+              fontSize: '17px',
+            },
+            value: {
+              formatter: function (val) {
+                return parseInt(val.toString(), 10).toString();
+              },
+              color: '#111',
+              fontSize: '36px',
+              show: true,
+            },
+          },
+        },
+      },
+      fill: {
+        type: 'gradient',
+        gradient: {
+          shade: 'dark',
+          type: 'horizontal',
+          shadeIntensity: 0.5,
+          gradientToColors: ['#ABE5A1'],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
+          stops: [0, 100],
+        } as any,
+      },
+      stroke: {
+        lineCap: 'round',
+      },
+      labels: ['Percent'],
+    };
+  }
+
   getFavCompany() {
     return this.companyList.filter((v: any) => v.fav == 1);
   }
@@ -439,6 +533,7 @@ export class CurrentProjectComponent implements OnInit {
   activeTab(index: number) {
     this.tabIndex = index;
     this.subTabReset();
+    this.updateRadial();
   }
 
   resetTab() {
@@ -459,19 +554,33 @@ export class CurrentProjectComponent implements OnInit {
       this.notesModal.nativeElement.style.display = 'block';
       this.notesForm.reset();
     }
+    if (modalName == 'improvement') {
+      this.improvementModal.nativeElement.classList.add('show');
+      this.improvementModal.nativeElement.style.display = 'block';
+      this.improvementForm.reset();
+    }
   }
 
   updateNotesModal(data: any) {
     this.notesForm.reset();
     this.notesForm.patchValue(data);
-    console.log('this.notesForm', this.notesForm.value);
     this.notesModal.nativeElement.classList.add('show');
     this.notesModal.nativeElement.style.display = 'block';
+  }
+
+  updateImprovementModal(data: any) {
+    this.improvementForm.reset();
+    this.improvementForm.patchValue(data);
+    this.improvementModal.nativeElement.classList.add('show');
+    this.improvementModal.nativeElement.style.display = 'block';
   }
 
   closeModal() {
     this.notesModal.nativeElement.classList.remove('show');
     this.notesModal.nativeElement.style.display = 'none';
+
+    this.improvementModal.nativeElement.classList.remove('show');
+    this.improvementModal.nativeElement.style.display = 'none';
   }
 
   generateUniqueId() {
@@ -505,9 +614,33 @@ export class CurrentProjectComponent implements OnInit {
     }
   }
 
+  addImprovement() {
+    let userContent = this.improvementForm.value.content;
+    let findIndex = this.improvementList.findIndex(
+      (n: any) => n.id == this.improvementForm.value.id
+    );
+    if (findIndex != -1) {
+      this.improvementList[findIndex].content = userContent;
+      this.closeModal();
+    } else {
+      let uniqueId = this.generateUniqueId();
+      this.improvementList.push({
+        id: uniqueId,
+        content: userContent,
+      });
+      this.closeModal();
+    }
+  }
+
   removeNotes(index: number) {
     if (index > -1) {
       this.notesList.splice(index, 1);
+    }
+  }
+
+  removeImprovement(index: number) {
+    if (index > -1) {
+      this.improvementList.splice(index, 1);
     }
   }
 
