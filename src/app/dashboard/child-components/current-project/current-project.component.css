@@ -54,3 +54,13 @@
     height: 100px;
     background-color: lightblue;
 }
+
+.r-circle {
+    border-radius: 50%;
+    width: 35%;
+    height: 90%;
+}
+
+.objectfit-cover {
+    object-fit: cover;
+}

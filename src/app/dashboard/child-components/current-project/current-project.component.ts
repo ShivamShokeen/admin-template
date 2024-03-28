@@ -3,8 +3,6 @@ import { ApiRequestService } from '../../../utility/api-request.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ModalDirective, ModalModule } from 'ngx-bootstrap/modal';
-import { Subject, BehaviorSubject } from 'rxjs';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -13,14 +11,9 @@ import {
   ApexTitleSubtitle,
   NgApexchartsModule,
   ApexPlotOptions,
-  ApexDataLabels,
   ApexStroke,
   ApexNonAxisChartSeries,
   ApexFill,
-  ApexResponsive,
-  ApexYAxis,
-  ApexMarkers,
-  ApexTooltip,
 } from 'ng-apexcharts';
 import {
   FormBuilder,
@@ -33,15 +26,8 @@ import { CommonFormService } from '../../../utility/common-form.service';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { WordLimitPipe } from '../../../utility/word-limit.pipe';
-import { Observable } from 'rxjs';
 
-import {
-  trigger,
-  state,
-  transition,
-  style,
-  animate,
-} from '@angular/animations';
+import { trigger } from '@angular/animations';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -65,6 +51,13 @@ export type pieChartOptions = {
   chart: ApexChart;
 };
 
+export type areaChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  title: ApexTitleSubtitle;
+};
+
 export type radialChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
@@ -81,7 +74,6 @@ export type radialChartOptions = {
     };
   };
 };
-// xaxis: ApexXAxis;
 interface UserInterface {
   name: string;
   age: number;
@@ -121,6 +113,8 @@ export class CurrentProjectComponent implements OnInit {
 
   public pieChartOptions: pieChartOptions;
 
+  public areaChartOptions: areaChartOptions;
+
   //  Charts
 
   notesList: any[] = [];
@@ -143,6 +137,7 @@ export class CurrentProjectComponent implements OnInit {
 
   date = new Date();
   minDate = new Date();
+  quickTeamList: any[] = [];
 
   constructor(
     private apiService: ApiRequestService,
@@ -151,7 +146,7 @@ export class CurrentProjectComponent implements OnInit {
     public utilities: CommonFormService,
     private toastService: ToastrService
   ) {
-    this.subTab = 1;
+    this.subTab = 3;
     this.notesList = [
       {
         id: 1,
@@ -220,6 +215,33 @@ export class CurrentProjectComponent implements OnInit {
       chart: {
         type: 'pie',
         height: 400,
+      },
+    };
+
+    this.areaChartOptions = {
+      series: [
+        {
+          name: 'Commit Frequency',
+          data: [10, 41, 35, 51, 49, 62, 69, 91, 148],
+        },
+      ],
+      chart: {
+        height: 350,
+        type: 'area',
+      },
+      title: {
+        text: 'User Commit Frequency',
+      },
+      xaxis: {
+        categories: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+          'Sunday',
+        ],
       },
     };
 
@@ -427,6 +449,9 @@ export class CurrentProjectComponent implements OnInit {
   }
 
   getAll() {
+    this.companyList = [];
+    this.cardList = [];
+    this.quickTeamList = [];
     this.apiService
       .getReq('assets/mock/current-project/', 'company.json')
       .subscribe({
@@ -441,6 +466,15 @@ export class CurrentProjectComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.cardList = data;
+        },
+        error: (e) => {},
+      });
+
+    this.apiService
+      .getReq('assets/mock/current-project/', 'quick-team.json')
+      .subscribe({
+        next: (data) => {
+          this.quickTeamList = data;
         },
         error: (e) => {},
       });
@@ -464,7 +498,6 @@ export class CurrentProjectComponent implements OnInit {
             margin: 0,
             size: '70%',
             background: '#fff',
-            image: undefined,
             position: 'front',
             dropShadow: {
               enabled: true,
@@ -674,6 +707,10 @@ export class CurrentProjectComponent implements OnInit {
 
     if (type == 'serverpiolt') {
       window.open('https://manage.serverpilot.io/login');
+    }
+
+    if (type == 'google_mail') {
+      window.open('https://www.google.com/gmail/about/');
     }
   }
 

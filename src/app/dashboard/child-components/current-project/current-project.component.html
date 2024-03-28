@@ -352,7 +352,105 @@
 
         <!-- Team -->
         <div *ngIf="subTab == 3">
-            Team
+            <div class="row">
+                <div class="col-6" *ngFor="let data of quickTeamList">
+                    <div class="card" [ngClass]="data?.premium == 1 ? 'card-bg-premium' : ''">
+                        <div class="card-body">
+                            <div>
+                                <div class="row">
+                                    <div class="col-10">
+                                        <div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" style="height: 40px;"
+                                                [ngClass]="data?.premium == 0 ? 'text-primary cursorPointer' : 'text-muted'">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 11.25v8.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 1 0 9.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1 1 14.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                                            </svg>
+
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <img src="https://placehold.co/400" class="r-circle objectfit-cover" />
+                                        </div>
+                                        <div class="mt-2">
+                                            <div class="d-flex justify-content-center">
+                                                <h4>{{data?.name}} ({{data?.designation}})</h4>
+                                            </div>
+
+                                            <div class="d-flex justify-content-center ">
+                                                {{data?.email}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div>
+
+                                            <div class="row">
+                                                <div
+                                                    class="col-12 d-flex justify-content-center tooltip-container-left mb-4">
+                                                    <img src="../../../../assets/icon/google-meet.svg" width="50%"
+                                                        class="tooltip-target" (click)="redirectURL('google')">
+
+                                                    <div class="tooltip-content-left">
+                                                        Instant Google Meeting
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="col-12 d-flex justify-content-center tooltip-container-left mb-4">
+                                                    <img src="../../../../assets/icon/skype-seeklogo.svg" width="50%"
+                                                        class="tooltip-target" (click)="redirectURL('skype')">
+
+                                                    <div class="tooltip-content-left">
+                                                        Instant Skype Meeting
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="col-12 d-flex justify-content-center tooltip-container-left mb-4">
+                                                    <img src="../../../../assets/icon/Teams_Logo.svg" width="50%"
+                                                        class="tooltip-target" (click)="redirectURL('team')">
+
+                                                    <div class="tooltip-content-left">
+                                                        Instant Team Meeting
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="col-12 d-flex justify-content-center tooltip-container-left mb-4">
+                                                    <img src="../../../../assets/icon/zm-logo.svg" width="50%"
+                                                        class="tooltip-target" (click)="redirectURL('zoom')">
+
+                                                    <div class="tooltip-content-left">
+                                                        Instant Zoom Meeting
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="col-12 d-flex justify-content-center tooltip-container-left mb-4">
+                                                    <img src="../../../../assets/icon/gmail.svg" width="50%"
+                                                        class="tooltip-target" (click)="redirectURL('google_mail')">
+
+                                                    <div class="tooltip-content-left">
+                                                        Instant Google Mail
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 mt-4">
+                                        <apx-chart [series]="areaChartOptions.series" [chart]="areaChartOptions.chart"
+                                            [xaxis]="areaChartOptions.xaxis"
+                                            [title]="{text : data.name + ' Commit Frequency'}">
+                                        </apx-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- https://apexcharts.com/docs/chart-types/range-bar-chart/ -->
         </div>
         <!-- Team -->

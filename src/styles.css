@@ -86,6 +86,7 @@
     justify-content: space-between;
 }
 
+/* Right Hover */
 
 .tooltip-container {
     position: relative;
@@ -126,4 +127,60 @@
     border-width: 5px;
     border-style: solid;
     border-color: #555 transparent transparent transparent;
+}
+
+/* Right Hover */
+
+/* Left Hover */
+
+.tooltip-container-left {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip-target:hover+.tooltip-content-left {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-content-left {
+    visibility: hidden;
+    width: 190px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 80%;
+    right: 70%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-content::after {
+    /* Arrow */
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    /* At the bottom of the tooltip */
+    left: 9%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Left Hover */
+
+
+.card-bg-premium {
+    /* background: linear-gradient(to bottom, #FF69B4, #9400D3); */
+    /* background: linear-gradient(to bottom, #0074D9, #39CCCC); */
+    /* background: linear-gradient(to bottom, #2ECC40, #FFDC00); */
+    /* background: linear-gradient(to bottom, #FFA500, #FF1493); */
+    /* background: linear-gradient(to bottom, rgba(46, 204, 64, 0.5), rgba(255, 220, 0, 0.5)); */
 }
